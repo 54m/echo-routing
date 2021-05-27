@@ -51,7 +51,9 @@ STEP:
 		cnt++
 
 		name := strings.TrimPrefix(r.Name, rootPackage)
-		name = strings.TrimSuffix(name, ".func1")
+		if strings.Contains(name, ".func1") {
+			name = strings.Split(name, ".func1")[0]
+		}
 		column := []string{r.Method, r.Path, name}
 
 		table.Append(column)
